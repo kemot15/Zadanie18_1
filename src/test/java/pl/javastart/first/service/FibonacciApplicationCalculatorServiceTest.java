@@ -1,24 +1,21 @@
-package pl.javastart.service;
+package pl.javastart.first.service;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-class CalculatorTest {
-    Calculator calculator;
+class FibonacciApplicationCalculatorServiceTest {
+    FibonacciCalculatorService fibonacciCalculatorService;
     List<Integer> numberList;
 
     @BeforeEach
     void setUp() {
-        calculator = new Calculator();
-        numberList = calculator.getNumbersList();
+        fibonacciCalculatorService = new FibonacciCalculatorService();
+        numberList = fibonacciCalculatorService.getNumbersList(10);
     }
 
     @AfterEach
@@ -34,7 +31,7 @@ class CalculatorTest {
 
     @Test
     void isValueBelowFourMilion() {
-        int expected = calculator.MAX;
+        int expected = 100;
 
         int result = numberList.get(numberList.size()-1);
 
@@ -44,9 +41,9 @@ class CalculatorTest {
 
     @Test
     void isCorrectValue() {
-        int expexted = 4613732;
+        int expexted = 44;
 
-        int result = calculator.getSum(numberList);
+        int result = fibonacciCalculatorService.getSum(numberList);
 
         assertThat(result).isEqualTo(expexted);
     }
